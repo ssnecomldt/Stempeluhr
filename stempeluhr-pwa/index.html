@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Stempeluhr">
-<meta name="theme-color" content="#E9EBED">
+<meta name="theme-color" content="#EFEBE5">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
@@ -16,14 +16,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --alu-1:#F7F8F9; --alu-2:#D9DCDF; --alu-line:rgba(255,255,255,.7); --alu-shade:rgba(60,70,80,.07);
-  --rib-hi:#FFFFFF; --rib-mid:#ECEEF0; --rib-lo:#BCC0C5;
-  --surface:#F6F2EA; --surface-2:#ECE5D8; --line:#D6CDBD;
-  --ink:#24272A; --muted:#666B70;
-  --go:#9A5B2E; --go-2:#7C4521; --go-ink:#FFF6EA; --stitch:rgba(255,236,210,.55);
+  --alu-1:#F3F1EC; --alu-2:#DAD5CC; --alu-line:rgba(255,255,255,.45); --alu-shade:rgba(90,75,55,.035);
+  --rib-hi:#FFFFFF; --rib-mid:#ECE8E1; --rib-lo:#C9C2B6;
+  --surface:#F8F4EC; --surface-2:#EFE8DC; --line:#E1D8C8;
+  --ink:#2E2A25; --muted:#756D62;
+  --go:#A47450; --go-2:#7F5636; --go-ink:#FFF8EE; --stitch:rgba(255,255,255,.12);
   --stop:#5E2620; --stop-2:#45190F; --stop-ink:#F6E9DD;
   --leather:#3A2A20; --leather-2:#2A1E17; --leather-ink:#E9DCC6;
-  --accent:#7C4521;
+  --accent:#7F5636;
   color-scheme:light;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
@@ -31,26 +31,26 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --alu-1:#E9EBED; --alu-2:#C7CBCF; --alu-line:rgba(255,255,255,.55); --alu-shade:rgba(40,50,60,.09);
-    --rib-hi:#F7F8F9; --rib-mid:#DDE0E3; --rib-lo:#A9AEB4;
-    --surface:#F0EBE2; --surface-2:#E4DCCE; --line:#CBC2B2;
-    --ink:#24272A; --muted:#5F656B;
-    --go:#A8683A; --go-2:#83502A; --go-ink:#FFF6EA; --stitch:rgba(255,236,210,.5);
+    --alu-1:#E8E4DD; --alu-2:#CCC6BB; --alu-line:rgba(255,255,255,.35); --alu-shade:rgba(80,65,45,.05);
+    --rib-hi:#F8F5F0; --rib-mid:#E2DDD4; --rib-lo:#BBB3A6;
+    --surface:#F2EDE4; --surface-2:#E7DFD2; --line:#D6CCBB;
+    --ink:#2E2A25; --muted:#6C655A;
+    --go:#A47450; --go-2:#7F5636; --go-ink:#FFF8EE; --stitch:rgba(255,255,255,.12);
     --stop:#7A3229; --stop-2:#5A2018; --stop-ink:#F6E9DD;
     --leather:#2A1E17; --leather-2:#1D1510; --leather-ink:#E9DCC6;
-    --accent:#7C4521;
+    --accent:#7F5636;
     color-scheme:light;
   }
 }
 :root[data-theme="dark"]{
-    --alu-1:#E9EBED; --alu-2:#C7CBCF; --alu-line:rgba(255,255,255,.55); --alu-shade:rgba(40,50,60,.09);
-    --rib-hi:#F7F8F9; --rib-mid:#DDE0E3; --rib-lo:#A9AEB4;
-    --surface:#F0EBE2; --surface-2:#E4DCCE; --line:#CBC2B2;
-    --ink:#24272A; --muted:#5F656B;
-  --go:#A8683A; --go-2:#83502A; --go-ink:#FFF6EA; --stitch:rgba(255,236,210,.5);
+    --alu-1:#E8E4DD; --alu-2:#CCC6BB; --alu-line:rgba(255,255,255,.35); --alu-shade:rgba(80,65,45,.05);
+    --rib-hi:#F8F5F0; --rib-mid:#E2DDD4; --rib-lo:#BBB3A6;
+    --surface:#F2EDE4; --surface-2:#E7DFD2; --line:#D6CCBB;
+    --ink:#2E2A25; --muted:#6C655A;
+  --go:#A47450; --go-2:#7F5636; --go-ink:#FFF8EE; --stitch:rgba(255,255,255,.12);
   --stop:#7A3229; --stop-2:#5A2018; --stop-ink:#F6E9DD;
   --leather:#2A1E17; --leather-2:#1D1510; --leather-ink:#E9DCC6;
-  --accent:#7C4521;
+  --accent:#7F5636;
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:inherit}
@@ -187,6 +187,44 @@ dialog form{padding:20px}
 .clock.shake{animation:shake .32s .82s}
 @keyframes shake{0%,100%{transform:none}20%{transform:translate(-5px,2px)}40%{transform:translate(5px,-2px)}60%{transform:translate(-3px,1px)}80%{transform:translate(2px,0)}}
 @media (prefers-reduced-motion:reduce){.stampcard,.shock{display:none}.dial.running,.dial.press,.clock.shake{animation:none}}
+/* ---- Lume: warmes eloxiertes Alu, Teak, Filz, Leinen, weiche Formen ---- */
+body{background-image:
+  repeating-linear-gradient(90deg,var(--alu-line) 0 1px,transparent 1px 4px,var(--alu-shade) 4px 5px,transparent 5px 9px),
+  radial-gradient(120% 70% at 20% 0%,rgba(255,255,255,.6),rgba(255,255,255,0) 60%),
+  linear-gradient(170deg,var(--alu-1) 0%,var(--alu-2) 70%,var(--alu-1) 100%)}
+:root{--teak:repeating-linear-gradient(97deg,rgba(255,255,255,.06) 0 2px,transparent 2px 9px,rgba(60,30,10,.07) 9px 10px,transparent 10px 17px),linear-gradient(180deg,var(--go),var(--go-2))}
+.clock{border-radius:30px;padding:36px 14px 30px;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.28) 0 1px,transparent 1px 3px),linear-gradient(180deg,#F7F4EF,#E2DCD2);
+  box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(120,100,80,.12),0 24px 44px -26px rgba(80,62,40,.45)}
+.clock::before,.clock::after{content:"";position:absolute;left:22px;right:22px;height:8px;pointer-events:none;
+  background:radial-gradient(circle at 4px 4px,#FFFFFF 0 1.3px,#C2BAAD 1.8px 3px,rgba(0,0,0,.08) 3.3px,transparent 3.8px) repeat-x;background-size:24px 8px}
+.clock::before{top:12px}.clock::after{bottom:12px}
+.timer,.clock .timer{border-radius:18px;background:var(--surface);box-shadow:inset 0 1px 3px rgba(80,62,40,.12)}
+.clock-sub{background:var(--surface)}
+.dial{filter:drop-shadow(0 18px 22px rgba(80,62,40,.28))}
+@keyframes glow{0%,100%{filter:drop-shadow(0 18px 22px rgba(80,62,40,.28)) drop-shadow(0 0 0 rgba(210,30,30,0))}50%{filter:drop-shadow(0 18px 22px rgba(80,62,40,.28)) drop-shadow(0 0 26px rgba(220,35,35,.8))}}
+.dial-label{border-radius:14px;background:var(--teak);box-shadow:0 3px 8px -2px rgba(60,40,20,.4),inset 0 1px 0 rgba(255,255,255,.25)}
+.dial.running .dial-label{border-radius:14px;box-shadow:0 3px 8px -2px rgba(60,20,20,.4),inset 0 1px 0 rgba(255,255,255,.2)}
+.input,.select{border-radius:16px;border-color:var(--line);box-shadow:inset 0 1px 2px rgba(80,62,40,.05)}
+.chip{border-radius:999px;border-color:var(--line)}
+.chip[aria-pressed="true"]{background:var(--teak);border-color:transparent;box-shadow:0 4px 10px -4px rgba(60,40,20,.45),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn{border-radius:16px}
+.btn.solid,.calday.has{background:var(--teak);border-color:transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.entry:first-child{border-top-left-radius:18px;border-top-right-radius:18px}
+.entry:last-child{border-bottom-left-radius:18px;border-bottom-right-radius:18px}
+#today,#pdEntries,#histList,#calDay{border-radius:18px;box-shadow:0 14px 30px -24px rgba(80,62,40,.5)}
+.empty,.sum div{border-radius:18px}
+.proj{border-radius:18px;border:1px solid var(--line);border-left:1px solid var(--line);box-shadow:0 14px 28px -22px rgba(80,62,40,.5);position:relative;overflow:hidden}
+.proj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--teak)}
+.calday{border-radius:12px}.calnav{border-radius:14px}
+dialog{border-radius:24px}
+nav{background-color:#5A554F;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");box-shadow:0 -10px 24px -16px rgba(60,45,30,.45)}
+nav::before{display:none}
+nav button{color:rgba(240,234,224,.62)}
+nav button[aria-current="page"]{color:#F6F1E8;box-shadow:inset 0 -3px 0 #C29A72}
+.toast{background:#5A554F;border-radius:14px}
+.stampcard{border-radius:10px}
+.stampcard:not(.run){visibility:hidden}
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -411,16 +449,16 @@ setInterval(()=>{ if(current==="clock"){ if(S.running) tick(); hands(); } },1000
   for(let n=1;n<=12;n++){ const a=n*30*Math.PI/180, r=64;
     t+='<text x="'+(100+r*Math.sin(a)).toFixed(2)+'" y="'+(100-r*Math.cos(a)).toFixed(2)+'" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#2A2724" font-family="Jost,Futura,sans-serif">'+n+'</text>'; }
   const svg='<svg viewBox="0 0 200 200" aria-hidden="true"><defs>'+
-    '<linearGradient id="bz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6F7F8"/><stop offset=".42" stop-color="#A4A8AD"/><stop offset=".58" stop-color="#E2E4E6"/><stop offset="1" stop-color="#83878C"/></linearGradient>'+
-    '<radialGradient id="fc" cx=".5" cy=".38" r=".75"><stop offset="0" stop-color="#FCF7EE"/><stop offset="1" stop-color="#E4D5BA"/></radialGradient>'+
+    '<linearGradient id="bz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBF9F5"/><stop offset=".42" stop-color="#BDB5A8"/><stop offset=".58" stop-color="#EDE8DF"/><stop offset="1" stop-color="#A0978A"/></linearGradient>'+
+    '<radialGradient id="fc" cx=".5" cy=".38" r=".75"><stop offset="0" stop-color="#FCFAF6"/><stop offset="1" stop-color="#EEE6D8"/></radialGradient>'+
     '<linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>'+
-    '<circle cx="100" cy="100" r="99" fill="url(#bz)"/><circle cx="100" cy="100" r="91" fill="#6E7277"/><circle cx="100" cy="100" r="89" fill="url(#fc)"/>'+
+    '<circle cx="100" cy="100" r="99" fill="url(#bz)"/><circle cx="100" cy="100" r="91" fill="#A39A8C"/><circle cx="100" cy="100" r="89" fill="url(#fc)"/>'+
     '<circle cx="100" cy="100" r="89" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="3"/>'+t+
-    '<text x="100" y="76" text-anchor="middle" font-size="7.5" letter-spacing="1.5" fill="#7C4521" font-family="Jost,Futura,sans-serif">STEMPELUHR</text>'+
+    '<text x="100" y="76" text-anchor="middle" font-size="7.5" letter-spacing="1.5" fill="#7F5636" font-family="Jost,Futura,sans-serif">STEMPELUHR</text>'+
     '<g id="hH"><rect x="96.8" y="54" width="6.4" height="52" rx="3.2" fill="#2A2724"/></g>'+
     '<g id="hM"><rect x="97.9" y="30" width="4.2" height="76" rx="2.1" fill="#2A2724"/></g>'+
     '<g id="hS"><line x1="100" y1="120" x2="100" y2="26" stroke="#B0302A" stroke-width="1.6"/><circle cx="100" cy="34" r="4.2" fill="#B0302A"/></g>'+
-    '<circle cx="100" cy="100" r="5" fill="#7C4521" stroke="#4A2A15" stroke-width="1"/>'+
+    '<circle cx="100" cy="100" r="5" fill="#7F5636" stroke="#5A3C25" stroke-width="1"/>'+
     '<path d="M28 82 A74 74 0 0 1 172 82 Q100 62 28 82Z" fill="url(#gl)"/></svg>';
   $("#goBtn").insertAdjacentHTML("afterbegin", svg);
 })();
